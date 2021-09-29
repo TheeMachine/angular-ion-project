@@ -1,0 +1,65 @@
+
+
+<!-- Result Title Section -->
+<div style="margin-left: 10px">
+  <b>Sonuçlar</b>
+</div>
+<!-- End Result Title Section -->
+
+<!-- Spinner Section -->
+<ion-content *ngIf="loading">
+  <div class="center h-full">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+  </div>
+</ion-content>
+<!-- End Spinner Section -->
+
+
+<!-- Not Found Section -->
+<ion-content *ngIf="!loading && restaurants.length == 0">
+  <div class="center h-full">
+    <b>
+      Restoran Bulunamadı
+    </b>
+    <ion-button fill="outline" color="secondary" (click)="getList()">
+      Konumu Aç
+    </ion-button>
+  </div>
+</ion-content>
+<!-- End Not Found Section -->
+
+
+<!-- Restaurant Card List Section -->
+<ion-virtual-scroll [items]="restaurants">
+  <app-restaurant-card
+    *virtualItem="let restaurant; let index = index"
+    [restaurant]="restaurant"
+    [index]="index"
+    [userLocation]="userLocation"
+  ></app-restaurant-card>
+</ion-virtual-scroll>
+<!-- End Restaurant Card List Section -->
+
+
+<!-- Infinite scroll Section -->
+<ion-infinite-scroll
+  threshold="100px"
+  (ionInfinite)="loadData($event)"
+  *ngIf="!loading && !isEnd"
+>
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Daha Fazla Yükleniyor..."
+  >
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+<!-- End Infinite scroll Section -->
+
+ 
+<!-- No More Found Section -->
+<div class="center p-3" *ngIf="isEnd">
+  <b>
+    Daha Fazla Restoran Bulunamadı
+  </b>
+</div>
+<!-- End No More Found Section -->

@@ -1,0 +1,16 @@
+<!-- <ion-searchbar animated placeholder="Mekan ara">
+  <ion-icon icon="options-outline" slot="right" align-self-center></ion-icon>
+</ion-searchbar> -->
+<ion-card class="search-section">
+  <ion-card-content class="search-content"> 
+    <div class="d-flex">
+      <ion-button class="ion-no-padding" fill="clear" (click)="input.setFocus()" buttonType="icon">
+        <ion-icon icon="search-outline" slot="start"  color="medium" slot="icon-only" ></ion-icon>
+        </ion-button>
+        <ion-input #input  type="text" [size]="30" placeholder="Mekan ara"></ion-input>
+        <ion-button class="ion-no-padding"  fill="clear">
+          <ion-icon icon="options-outline" slot="end"  color="dark" slot="icon-only"></ion-icon>
+        </ion-button>
+    </div>
+  </ion-card-content>
+</ion-card>

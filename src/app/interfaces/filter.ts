@@ -1,0 +1,6 @@
+export interface Filter {
+  skip: number;
+  limit: number;
+  latitude: number;
+  longitude: number;
+}

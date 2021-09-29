@@ -1,0 +1,67 @@
+<ion-card style="min-height: 275px;">
+  <!-- Restaurant Image Header Section -->
+  <ion-card-header class="ion-no-padding">
+    <!-- Restaurant Star rate Section -->
+    <div class="star-content detail">
+      <ion-icon icon="star"></ion-icon>
+      <span class="ml-1">{{ restaurant.storeInfo?.rate }}</span>
+    </div>
+    <!-- End Restaurant Star rate Section -->
+    <!-- Image Section -->
+    <ion-img [src]="restaurant.images[0]?.base64" class="card-image"></ion-img>
+    <!-- Image Section -->
+  </ion-card-header>
+  <!-- End Restaurant Image Header Section -->
+
+
+  <!-- Detail Section -->
+  <ion-card-content class="h130">
+    
+      <!-- Restaurant Title and Desc Section -->
+      <div style="padding: 15px 0px">
+        <ion-card-title>
+          {{ restaurant.title }}
+        </ion-card-title>
+        <ion-card-subtitle>
+          {{ restaurant.text }}
+        </ion-card-subtitle>
+      </div>
+      <!-- End Restaurant Title and Desc Section -->
+
+    <div class="detail">
+      <!-- Restaurant Distance Section -->
+      <div class="close-calculate">{{calculateDistance()}} km yakınında</div>
+      <!-- End Restaurant Distance Section -->
+
+      <div>
+        <!-- Min Order Price Section -->
+        <div class="min-order-price">
+          <span>
+            <ion-icon icon="basket"></ion-icon>
+            <ion-label color="medium" class="ml-1px">
+              <b>Min. Sipariş Tutarı : </b>
+            </ion-label>
+          </span>
+          <b class="ml-1px"> ₺{{ restaurant.storeInfo?.minOrderPrice }}</b>
+        </div>
+        <!-- End Min Order Price Section -->
+
+        <!-- Open or Close Section  -->
+        <div class="d-flex">
+          <ion-label [color]="calcOpenOrClosed() ? 'success' : 'danger'"
+            >İşletme {{ calcOpenOrClosed() ? "Açık" : "Kapalı" }}
+          </ion-label>
+          <span class="ml-1">
+            {{
+              this.restaurant.storeInfo?.workingHours[0].open +
+                " / " +
+                this.restaurant.storeInfo?.workingHours[0].close
+            }}
+          </span>
+        </div>
+        <!-- End Open or Close Section  -->
+      </div>
+    </div>
+  </ion-card-content>
+  <!-- End Detail Section -->
+</ion-card>
